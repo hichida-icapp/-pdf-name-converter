@@ -9,18 +9,22 @@
     "postinstall": "electron-rebuild"
   },
   "build": {
-    "appId": "com.example.pdfnameconverter",
-    "files": [
-      "app/**/*",
-      "lib/**/*",
-      "assets/**/*"
-    ],
-    "extraResources": [
-      {
-        "from": "assets/fonts",
-        "to": "fonts"
-      }
-    ]
+  "appId": "com.example.pdfnameconverter",
+  "productName": "PDF Name Converter",
+  "asar": true,
+  "files": [
+    "app/**/*",
+    "lib/**/*",
+    "assets/**/*",
+    "package.json"
+  ],
+  "extraResources": [
+    { "from": "assets/fonts", "to": "fonts" }
+  ],
+  "mac": { "target": ["dmg","zip"] },
+  "win": { "target": [ { "target": "nsis", "arch": ["x64"] } ] },
+  "directories": { "output": "dist" },
+  "artifactName": "${productName}-${version}-${os}-${arch}.${ext}"
   },
   "dependencies": {
     "@pdf-lib/fontkit": "^1.1.1",
